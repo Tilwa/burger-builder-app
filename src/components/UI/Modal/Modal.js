@@ -1,18 +1,22 @@
 import React from "react";
 import classes from "./Modal.css";
-import OrderSummary from "../../Burger/OrderSummary/OrderSummary";
+import Aux from "../../../hoc/Auex";
+import Backdrop from "../Backdrop/Backdrop";
 
 const Modal = (props) => {
   return (
-    <div
-      className={classes.Modal}
-      style={{
-        transform: props.show ? "TransformY(0)" : "Transform(-100vh)",
-        opacity: props.show ? "1" : "0",
-      }}
-    >
-      {props.children}
-    </div>
+    <Aux>
+      <Backdrop show={props.show} clicked={props.modalClosed} />
+      <div
+        className={classes.Modal}
+        style={{
+          transform: props.show ? "TransformY(0)" : "Transform(-100vh)",
+          opacity: props.show ? "1" : "0",
+        }}
+      >
+        {props.children}
+      </div>
+    </Aux>
   );
 };
 
